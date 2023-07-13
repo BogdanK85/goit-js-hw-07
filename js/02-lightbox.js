@@ -24,9 +24,6 @@ function onPictureClick(event) {
 
 //const lightbox = new SimpleLightbox;
 new SimpleLightbox('.gallery a', {
-    captions: true,
-    captionType: "attr",
     captionsData: "alt",
-    captionPosition: "bottom",
     captionsDelay: 250,
 });

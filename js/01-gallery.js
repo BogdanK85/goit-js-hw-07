@@ -23,13 +23,19 @@ function onPictureClick(event) {
         return;
     }
     const pictureInModal = basicLightbox.create(
-        `<img src="${event.target.dataset.source}" width="1200" height="800">`
+        `<img src="${event.target.dataset.source}" width="1200" height="800">`, {
+        onShow: (document.addEventListener('keyup', onEscapeClose))
+    }
     );
+    document.removeEventListener('keyup', onEscapeClose)
+
     pictureInModal.show();
 
-    galleryElem.addEventListener('keydown', event => {
+    galleryElem.addEventListener('keydown', onEscapeClose)
+
+    function onEscapeClose(event) {
         if (event.code === "Escape") {
             pictureInModal.close()
         }
-    })
+}
 }
